@@ -79,7 +79,6 @@ vim.api.nvim_set_keymap("n", "<leader>lv", ":vsp | term zathura %:r.pdf<CR>", { 
 -- Keybindings Configuration (keybind.lua)
 
 -- Keybinding to toggle Neo-tree
-vim.api.nvim_set_keymap("n", "<leader>lv", ":LatexBuild<CR>", { noremap = true, silent = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = "*.tex", -- Trigger this for any .tex file
   callback = function()
