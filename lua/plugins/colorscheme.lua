@@ -1,12 +1,8 @@
+-- lua/plugins/rose-pine.lua
 return {
-  {
-    "craftzdog/solarized-osaka.nvim",
-    lazy = true,
-    priority = 1000,
-    opts = function()
-      return {
-        transparent = true,
-      }
-    end,
-  },
+  "rose-pine/neovim",
+  name = "rose-pine",
+  config = function()
+    vim.cmd("colorscheme rose-pine")
+  end,
 }

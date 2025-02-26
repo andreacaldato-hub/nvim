@@ -33,7 +33,7 @@ return {
         desc = "Find Plugin File",
       },
       {
-        ";f",
+        "<leader>f",
         function()
           local builtin = require("telescope.builtin")
           builtin.find_files({
