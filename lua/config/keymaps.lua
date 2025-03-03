@@ -78,23 +78,6 @@ vim.api.nvim_set_keymap("n", "<leader>fq", ":Telescope find_files cwd=/<CR>", { 
 vim.api.nvim_set_keymap("n", "<leader>lv", ":vsp | term zathura %:r.pdf<CR>", { noremap = true, silent = true })
 -- Keybindings Configuration (keybind.lua)
 
--- Keybinding to toggle Neo-tree
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = "*.tex", -- Trigger this for any .tex file
-  callback = function()
-    -- Save the current working directory
-    local current_dir = vim.fn.expand("%:p:h")
-
-    -- Change to the directory of the current .tex file
-    vim.cmd("cd " .. current_dir)
-
-    -- Run the latexmk command but suppress the output
-    vim.cmd("!latexmk -pdf % > /dev/null 2>&1") -- Redirect stdout and stderr to null
-
-    -- Optionally, return to the original directory after the compilation
-    vim.cmd("cd -")
-  end,
-})
 vim.api.nvim_set_keymap("n", "<C-w>", ":set wrap<CR>", { noremap = true, silent = true })
 --
 --
