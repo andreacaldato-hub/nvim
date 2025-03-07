@@ -72,7 +72,18 @@ vim.api.nvim_set_keymap("t", "<Esc>", [[<C-\><C-n>]], { noremap = true, silent =
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Map leader f a to search all files on the system
-vim.api.nvim_set_keymap("n", "<leader>fq", ":Telescope find_files cwd=/<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>fF",
+  ":lua require('telescope.builtin').find_files({cwd='~/'})<CR>",
+  { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>fh",
+  ":lua require('telescope.builtin').find_files({cwd='~/.config'})<CR>",
+  { noremap = true, silent = true }
+)
 
 -- Keybinding to open the PDF in a vertical split
 vim.api.nvim_set_keymap("n", "<leader>lv", ":vsp | term zathura %:r.pdf<CR>", { noremap = true, silent = true })
