@@ -74,14 +74,32 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Map leader f a to search all files on the system
 vim.api.nvim_set_keymap(
   "n",
-  "<leader>fF",
+  "<leader>ff",
   ":lua require('telescope.builtin').find_files({cwd='~/'})<CR>",
   { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
   "n",
-  "<leader>fh",
+  "<leader>fF",
+  ":lua require('telescope.builtin').find_files({cwd='/'})<CR>",
+  { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>fc",
   ":lua require('telescope.builtin').find_files({cwd='~/.config'})<CR>",
+  { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>fn",
+  ":lua require('telescope.builtin').find_files({cwd='~/.config/nvim'})<CR>",
+  { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>fs",
+  ":lua require('telescope.builtin').find_files({cwd='~/.local/share/'})<CR>",
   { noremap = true, silent = true }
 )
 
