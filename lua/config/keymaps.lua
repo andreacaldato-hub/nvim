@@ -105,4 +105,4 @@ vim.api.nvim_set_keymap(
 
 vim.api.nvim_set_keymap("n", "<C-w>", ":set wrap<CR>", { noremap = true, silent = true })
 --
---
+--porca la madonna
