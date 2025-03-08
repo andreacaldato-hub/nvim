@@ -103,10 +103,6 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true }
 )
 
--- Keybinding to open the PDF in a vertical split
-vim.api.nvim_set_keymap("n", "<leader>lv", ":vsp | term zathura %:r.pdf<CR>", { noremap = true, silent = true })
--- Keybindings Configuration (keybind.lua)
-
 vim.api.nvim_set_keymap("n", "<C-w>", ":set wrap<CR>", { noremap = true, silent = true })
 --
 --
