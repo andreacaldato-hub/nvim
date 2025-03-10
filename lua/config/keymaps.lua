@@ -108,3 +108,12 @@ vim.keymap.set("n", "<C-l>", "<Cmd>TmuxNavigateRight<CR>", { noremap = true, sil
 vim.keymap.set("n", "<C-h>", "<Cmd>TmuxNavigateLeft<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-k>", "<Cmd>TmuxNavigateUp<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-j>", "<Cmd>TmuxNavigateDown<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>t", ":lua OpenTmuxSplit()<CR>", { noremap = true, silent = true })
+
+function OpenTmuxSplit()
+  local cwd = vim.fn.expand("%:p:h") -- Get the directory of the current file
+  if cwd == "" then
+    cwd = vim.fn.getcwd() -- Fallback to Neovim's working directory
+  end
+  os.execute("tmux split-window -h -c " .. cwd)
+end
