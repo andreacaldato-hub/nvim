@@ -21,7 +21,7 @@ else
 endif
 badd +8 lua/config/autocmds.lua
 badd +5 ~/.config/nvim/.gitignore
-badd +10 ~/.config/nvim/lua/config/keymaps.lua
+badd +16 ~/.config/nvim/lua/config/keymaps.lua
 argglobal
 %argdel
 edit ~/.config/nvim/lua/config/keymaps.lua
@@ -42,11 +42,11 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 10 - ((9 * winheight(0) + 23) / 46)
+let s:l = 16 - ((15 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 10
+keepjumps 16
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
