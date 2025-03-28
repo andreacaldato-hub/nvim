@@ -31,10 +31,10 @@ vim.keymap.set("n", "<Down>", ":resize -2<CR>", opts)
 vim.keymap.set("n", "<Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>", opts)
 -- Navigate between splits
-vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", opts)
-vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", opts)
-vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", opts)
-vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", opts)
+vim.keymap.set("n", "<C-K>", ":wincmd k<CR>", opts)
+vim.keymap.set("n", "<C-J>", ":wincmd j<CR>", opts)
+vim.keymap.set("n", "<C-H>", ":wincmd h<CR>", opts)
+vim.keymap.set("n", "<C-L>", ":wincmd l<CR>", opts)
 -- toggle line wrapping
 vim.keymap.set("n", "<leader>w", "<cmd>set wrap!<CR>", opts)
 -- Stay in indent mode
@@ -108,12 +108,13 @@ vim.keymap.set("n", "<C-l>", "<Cmd>TmuxNavigateRight<CR>", { noremap = true, sil
 vim.keymap.set("n", "<C-h>", "<Cmd>TmuxNavigateLeft<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-k>", "<Cmd>TmuxNavigateUp<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-j>", "<Cmd>TmuxNavigateDown<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>t", ":lua OpenTmuxSplit()<CR>", { noremap = true, silent = true })
-
 function OpenTmuxSplit()
-  local cwd = vim.fn.expand("%:p:h") -- Get the directory of the current file
-  if cwd == "" then
-    cwd = vim.fn.getcwd() -- Fallback to Neovim's working directory
-  end
-  os.execute("tmux split-window -h -c " .. cwd)
+  -- Get current working directory in Neovim
+  local cwd = vim.fn.getcwd()
+
+  -- Create a Tmux horizontal split with the correct directory
+  os.execute(string.format("tmux split-window -h -c %s", vim.fn.shellescape(cwd)))
 end
+
+-- Keymap to trigger the function
+vim.api.nvim_set_keymap("n", "<leader>t", ":lua OpenTmuxSplit()<CR>", { noremap = true, silent = true })

@@ -20,8 +20,8 @@ else
   set shortmess=aoO
 endif
 badd +8 lua/config/autocmds.lua
-badd +5 ~/.config/nvim/.gitignore
-badd +13 ~/.config/nvim/lua/config/keymaps.lua
+badd +1 ~/.config/nvim/.gitignore
+badd +111 ~/.config/nvim/lua/config/keymaps.lua
 argglobal
 %argdel
 edit ~/.config/nvim/lua/config/keymaps.lua
@@ -33,7 +33,7 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-balt ~/.config/nvim/.gitignore
+balt lua/config/autocmds.lua
 setlocal fdm=expr
 setlocal fde=v:lua.require'lazyvim.util'.ui.foldexpr()
 setlocal fmr={{{,}}}
@@ -42,11 +42,11 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 13 - ((12 * winheight(0) + 23) / 47)
+let s:l = 111 - ((35 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 13
+keepjumps 111
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
