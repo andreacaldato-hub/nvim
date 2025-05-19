@@ -16,10 +16,6 @@ vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", opts)
 vim.keymap.set("n", "<leader>x", ":bd!<CR>", opts) -- close buffer
 vim.keymap.set("n", "<leader>b", "<cmd> enew <CR>", opts) -- new buffer
 -- tabs
-vim.keymap.set("n", "<leader>to", ":tabnew<CR>", opts) -- open new tab
-vim.keymap.set("n", "<leader>tx", ":tabclose<CR>", opts) -- close current tab
-vim.keymap.set("n", "<leader>tn", ":tabn<CR>", opts) --  go to next tab
-vim.keymap.set("n", "<leader>tp", ":tabp<CR>", opts) --  go to previous tab
 -- window management
 vim.keymap.set("n", "<leader>v", "<C-w>v", opts) -- split window vertically
 vim.keymap.set("n", "<leader>o", "<C-w>s", opts) -- split window horizontally
@@ -109,12 +105,9 @@ vim.keymap.set("n", "<C-h>", "<Cmd>TmuxNavigateLeft<CR>", { noremap = true, sile
 vim.keymap.set("n", "<C-k>", "<Cmd>TmuxNavigateUp<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-j>", "<Cmd>TmuxNavigateDown<CR>", { noremap = true, silent = true })
 function OpenTmuxSplit()
-  -- Get current working directory in Neovim
-  local cwd = vim.fn.getcwd()
-
-  -- Create a Tmux horizontal split with the correct directory
-  os.execute(string.format("tmux split-window -h -c %s", vim.fn.shellescape(cwd)))
+  local file_path = vim.fn.expand("%:p:h") -- Get the directory of the current file
+  local cmd = "tmux split-window -h -c " .. vim.fn.shellescape(file_path) -- Open tmux split in that directory
+  vim.fn.system(cmd)
 end
 
--- Keymap to trigger the function
 vim.api.nvim_set_keymap("n", "<leader>t", ":lua OpenTmuxSplit()<CR>", { noremap = true, silent = true })
